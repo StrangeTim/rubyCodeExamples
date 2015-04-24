@@ -5,7 +5,7 @@ class String
     count = 0
     clean_test_phrase = test_phrase.input_cleaner  #removes non-alphabetic characters from test consideration. :input verification
     clean_test_phrase.each() do |word|
-      if self == word
+      if self.downcase == word.downcase
         count += 1
       end
     end
@@ -22,7 +22,7 @@ class String
     to_sep_words = self.split()
     return_words = []
     to_sep_words.each() do |word|
-      dirty_word = word.split("")
+      dirty_word = (word.downcase).split("")
       good_characters = true
       dirty_word.each() do |char|
         if chars_to_compare.include?(char.downcase) == false
