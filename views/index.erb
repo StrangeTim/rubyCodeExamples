@@ -1,0 +1,15 @@
+<h1>Try and trick me!</h1>
+<h2>Give me a word and a phrase and I'll tell you how many times the input word appears in the test phrase</h2>
+<form action = "/display_page">
+  <div class = "form-group">
+    <label for = "find_word">Find this word:</label>
+    <input id = "find_word" name = "find_word" class = "form-control" type = "text">
+    <h3>Please only input alphabetic characters</h3>
+  </div>
+  <div class = "form-group">
+    <label for = "test_phrase">Inside this phrase:</label>
+    <input id = "test_phrase" name = "test_phrase" class = "form-control" type = "text">
+    <h3>Non-alphabetic characters are not considered.</h3>
+  </div>
+  <button type = "submit" class = "btn-success">Count</button>
+</form>
