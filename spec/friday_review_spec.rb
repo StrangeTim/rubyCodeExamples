@@ -8,4 +8,7 @@ describe('String#friday_review') do
   it("Returns the correct count for the number of times a sample string appears within a test string.") do
     expect("happy".friday_review("I am happy, happy")).to(eq(2))
   end
+  it("Returns the correct count for the number of times a sample string appears within a test string. Ensuring only invalid characters are removed and strings are not incorrectly split.") do
+    expect("happy".friday_review("I am happy, happy happyhappy happ hap happya")).to(eq(2))
+  end
 end
