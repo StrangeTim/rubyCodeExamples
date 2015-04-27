@@ -10,6 +10,6 @@ describe('The result path', {:type => :feature}) do
     fill_in('side_2', :with => 2)
     fill_in('side_3', :with => 2)
     click_button("Submit")
-    expect(page).to have_content("Those sides create an equilateral triangle.")
+    expect(page).to have_content("Your triangle is equilateral")
   end
 end

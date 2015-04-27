@@ -38,4 +38,20 @@ class Triangle
        false
      end
    end
+
+   define_method(:triangle_type) do
+     if @side1 > 0 &&   @side2 > 0 && @side3 > 0
+       if self.equilateral?
+         "Your triangle is equilateral"
+       elsif self.isosceles?
+         "Your triangle is isosceles"
+       elsif self.not_triangle?
+         "Those sides cannot make a triangle"
+       elsif self.scalene?
+         "Your triangle has uneven sides and is scalene"
+       else
+       end
+    else "WHAT EVEN IS THIS"
+    end
+  end
 end
