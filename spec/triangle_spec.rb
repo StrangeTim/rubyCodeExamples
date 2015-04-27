@@ -35,7 +35,14 @@ describe(Triangle) do
     end
   end
 
-  describe('#not_triangle') do
-
+  describe('#not_triangle?') do
+    it ('returns true if the given sides would create an invalid triangle') do
+      test_not_triangle = Triangle.new(2,1,4)
+      expect(test_not_triangle.not_triangle?).to(eq(true))
+    end
+    it ('returns false if the given sides would create a valid triangle') do
+      test_not_triangle2 = Triangle.new(5,5,3)
+      expect(test_not_triangle2.not_triangle?).to(eq(false))
+    end
   end
 end
