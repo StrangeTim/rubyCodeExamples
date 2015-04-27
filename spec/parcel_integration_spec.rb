@@ -1,6 +1,6 @@
 require 'capybara/rspec'
 require  './app'
-Caybara.app = Sinatra::Application
+Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
 describe('Package volume and cost calculation spec program paths.', {:type => :feature}) do
@@ -12,6 +12,6 @@ describe('Package volume and cost calculation spec program paths.', {:type => :f
     fill_in('weight', :with => 10)
     fill_in('distance', :with => 250)
     click_button("Submit")
-    expect(page).to have_content("Your cost is: $27.75.")
+    expect(page).to have_content("$21.00")
   end
 end

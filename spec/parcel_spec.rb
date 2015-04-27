@@ -12,7 +12,7 @@ describe(Parcel) do
   describe('#cost') do
     it('calculates the cost to ship from point a to point b') do
       this_box = Parcel.new(25, 15, 10, 2)
-      expect(this_box.cost(100)).to(eq(41.6))
+      expect(this_box.cost(100)).to(eq("41.60"))
     end
   end
 end
