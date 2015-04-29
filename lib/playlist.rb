@@ -4,19 +4,18 @@ class CD
   define_method(:initialize) do |title|
     @id = @@playlist.length().+(1)
     @title = title
-    @artist = nil
   end
 
   define_singleton_method(:clear) do
     @@playlist = []
   end
 
-  define_method(:add_cd) do
-    @@playlist.push(self)
+  define_singleton_method(:all) do
+    @@playlist
   end
 
-  define_method(:add_artist) do
-    @artist = self
+  define_method(:add_cd) do
+    @@playlist.push(self)
   end
 
   define_method(:get_title) do
@@ -33,5 +32,4 @@ class CD
     end
     ordered_list.sort!()
   end
-
 end
