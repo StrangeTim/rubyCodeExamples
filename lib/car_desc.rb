@@ -8,13 +8,13 @@ class Car
     @model = car_model
     @year = year
     @color = color
-    @id = @@cars.length().+(1)
-    # if @@cars.length() > 0
-    #   last_id = @@cars[-1].get_id()
-    #   @id = last_id + 1
-    # else
-    #   @id = 1
-    # end
+    # @id = @@cars.length().+(1)
+    if @@cars.length() > 0
+      last_id = @@cars[-1].get_id()
+      @id = last_id + 1
+    else
+      @id = 1
+    end
   end
 
   define_singleton_method(:all) do
@@ -22,15 +22,52 @@ class Car
   end
 
   define_singleton_method(:get_by_id) do |desired_car|
+    car_match = nil
+    car_found = false
 
     @@cars.each() do |car|
       if car.get_id() == desired_car
-        return car
-      else
-        "No match found"
+        car_found = true
+        car_match = car
       end
     end
+    if car_found == false
+      return "No match found"
+    else
+      return car_match
+    end
   end
+
+  define_singleton_method(:get_by_make) do |desired_car|
+    matching_cars = []
+    @@cars.each() do |car|
+      if car.get_make() == desired_car
+        matching_cars.push(car)
+      end
+    end
+    matching_cars
+  end
+
+  define_singleton_method(:get_by_model) do |desired_car|
+    matching_cars = []
+    @@cars.each() do |car|
+      if car.get_model() == desired_car
+        matching_cars.push(car)
+      end
+    end
+    matching_cars
+  end
+
+  define_singleton_method(:get_by_year) do |desired_car|
+    matching_cars = []
+    @@cars.each() do |car|
+      if car.get_year() == desired_car
+        matching_cars.push(car)
+      end
+    end
+    matching_cars
+  end
+
 
   define_singleton_method(:clear) do
     @@cars = []
