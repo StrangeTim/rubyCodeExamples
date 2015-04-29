@@ -97,4 +97,22 @@ class Car
     @id
   end
 
+  define_singleton_method(:make_inventory) do |number|
+    car_make = ["Ford", "Audi", "Volvo", "VW", "Benz", "Subaru", "Toyota"]
+    car_model = ["Taurus","Outback", "Elantra", "Miata", "Protege", "Focus", "Escape"]
+    colors = ["red", "blue", "green", "yellow", "magenta", "purple", "black"]
+    years = ["1990","1991","1992","2000", "1905", "2304", "1200"]
+    counter = 0
+    counter2 = 0
+    until counter == number do
+      @@cars.push(Car.new(car_make[counter2], car_model[counter2], years[counter2], colors[counter2]))
+      counter += 1
+      counter2 += 1
+      if counter2 == 7
+        counter2 == 0
+      end
+    end
+  end
+
+
 end
