@@ -5,7 +5,6 @@ class Phone
 
   define_method(:initialize) do |number|
     @cell_numbers = {"cell1" => number}
-# binding.pry
     @work_numbers = {}
     @home_numbers = {}
     @cell_count = 1
@@ -50,6 +49,5 @@ class Phone
     end
     self.add_numbers()
   end
-
 
 end
