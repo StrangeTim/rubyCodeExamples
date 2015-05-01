@@ -15,5 +15,4 @@ describe(Word) do
       expect(Word.all_words).to(eq({"Superfluous" => nil}))
     end
   end
-
 end

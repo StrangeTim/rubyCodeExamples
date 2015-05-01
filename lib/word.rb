@@ -16,12 +16,12 @@ class Word
     @@dictionary = {}
   end
 
-  define_method(:add_def) do |def|
+  define_method(:add_def) do |definition|
     current_def = @@dictionary.fetch(self)
     if current_def != nil
-      current_def += "/n" + def
+      current_def += "/n" + definition
     else
-      current_def = def
+      current_def = definition
     end
     @@dictionary[self] = current_def
   end
