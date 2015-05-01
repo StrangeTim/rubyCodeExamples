@@ -16,6 +16,15 @@ class Word
     @@dictionary = {}
   end
 
+  define_singleton_method(:key_sort) do
+    dictionary2 = {}
+    just_keys = @@dictionary.keys.sort
+    just_keys.each() do |key|
+      dictionary2[key] = @@dictionary.fetch(key)
+    end
+    @@dictionary = dictionary2
+  end
+
   define_method(:add_def) do |definition|
     current_def = @@dictionary.fetch(self)
     if current_def != nil

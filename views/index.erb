@@ -16,6 +16,11 @@
 
 <h1>Currently known words:</h1>
 
-<% @all_words.each() do |word| %>
-  <a href="/display"><%= word %> </a>
-<% end %>
+<form action='/display' method='get'>
+  <ol id="words_list">
+  <% @all_words.each() do |word| %>
+    <li><div style="display: none;" id="hiddenText"><%= word[1] %></div>
+<a href="#" onclick="$('#hiddenText').show(); return false;"><%= word[0] %> </a></li>
+  <% end %>
+  </ol>
+</form>

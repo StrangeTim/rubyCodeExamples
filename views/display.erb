@@ -1,1 +1,5 @@
-<h1>Definition(s)</h1>
+<h1>Word(s) and Definition(s)</h1>
+
+<% @all_words.each() do |word_def| %>
+  <%= word_def[0] %>: <%= word_def[1] %><br>
+<% end %>

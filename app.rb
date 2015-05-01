@@ -1,14 +1,16 @@
-require("sinatra")
-require("sinatra/reloader")
-require('./lib/word')
-require('./lib/definition')
+require 'sinatra'
+require 'sinatra/reloader'
+require './lib/word'
+require './lib/definition'
 also_reload("lib/**/*.rb")
+
 
 @all_words = []
 @word = " "
 
+
 get('/') do
-  @all_words = Word.all_words.keys
+  @all_words = Word.key_sort
   erb(:index)
 end
 
@@ -25,11 +27,13 @@ get('/success') do
     @message = "deleted"
     erb(:success)
   elsif @choice == "3"
-    @all_words = Word.all.to_a
+    @all_words = Word.all_words.to_a
     erb(:display)
   end
 end
 
 get('/display') do
+  word_link = params.fetch('link_word')
+  @all_words = [word_link, Word.all_words.fetch(word_link)]
   erb(:display)
 end
