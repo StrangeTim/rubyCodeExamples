@@ -2,10 +2,13 @@ class Word
   @@dictionary = {}
 
   define_method(:initialize) do |attributes|
-
+    @word = attributes.fetch(:word)
+    @definition = attributes.fetch(:definition)
   end
 
-  define_singleton_method(:all) do
+  attr_reader(:word, :definition)
+
+  define_singleton_method(:all_words) do
     @@dictionary
   end
 
@@ -13,8 +16,8 @@ class Word
     @@dictionary = {}
   end
 
-  define_method(:blarg) do
-
+  define_method(:add_word) do
+    @@dictionary[self.word()] = self.definition()
   end
 
 end
