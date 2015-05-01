@@ -1,9 +1,9 @@
 class Word
   @@dictionary = {}
 
-  define_method(:initialize) do |attributes|
-    @word = attributes.fetch(:word)
-    @definition = attributes.fetch(:definition)
+  define_method(:initialize) do |word|
+    @word = word.downcase
+    @definition = nil
   end
 
   attr_reader(:word, :definition)

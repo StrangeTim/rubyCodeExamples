@@ -13,11 +13,13 @@ get('/') do
 end
 
 get('/success') do
-  @word = params.fetch('word')
+  @word = params.fetch('word').downcase
   @message = ""
   @choice = params.fetch('drop_choice')
   if @choice == "1"
     @message = "added"
+    word_to_add = Word.new(@word)
+    word_to_add.add_word
     erb(:success)
   elsif @choice == "2"
     @message = "deleted"

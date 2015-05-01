@@ -1,5 +1,6 @@
 require 'capybara/rspec'
 require './app'
+require './lib/word'
 Capybara.app = Sinatra::Application
 
 describe("The word add path", {:type => :feature}) do
@@ -8,6 +9,7 @@ describe("The word add path", {:type => :feature}) do
     select("Add a word", :from => 'drop_choice')
     fill_in('word', :with => 'Superfluous')
     click_button('Next')
-    expect(page).to have_content('Your word, Superfluous, has been added')
+    expect(page).to have_content('Your word, superfluous, has been added')
+    expect(Word.all_words).to(eq({"superfluous" => nil}))
   end
 end
