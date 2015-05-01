@@ -1,0 +1,21 @@
+<h1>Choose an option or click on a word below</h1>
+
+
+<form action='/success' method='get'>
+  <p>
+  <select name='drop_choice'>
+    <option value="1">Add a word</option>
+    <option value="2">Delete a word</option>
+    <option value="3">View all</option>
+  </select>
+  </p>
+  <label for="word">If adding or deleting:</label>
+  <input id="word" name="word" type="text" placeholder="word to add or delete">
+  <p><button type='submit'>Next</button></p>
+</form>
+
+<h1>Currently known words:</h1>
+
+<% @all_words.each() do |word| %>
+  <a href="/display"><%= word %> </a>
+<% end %>

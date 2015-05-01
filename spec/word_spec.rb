@@ -13,7 +13,6 @@ describe(Word) do
       test_word = Word.new({:word => "Superfluous",:definition => nil})
       test_word.add_word
       expect(Word.all_words).to(eq({"Superfluous" => nil}))
-
     end
   end
 

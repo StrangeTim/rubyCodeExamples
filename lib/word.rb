@@ -16,6 +16,16 @@ class Word
     @@dictionary = {}
   end
 
+  define_method(:add_def) do |def|
+    current_def = @@dictionary.fetch(self)
+    if current_def != nil
+      current_def += "/n" + def
+    else
+      current_def = def
+    end
+    @@dictionary[self] = current_def
+  end
+
   define_method(:add_word) do
     @@dictionary[self.word()] = self.definition()
   end
