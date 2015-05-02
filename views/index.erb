@@ -16,11 +16,16 @@
 
 <h1>Currently known words:</h1>
 
+<h3>Click on a word to see or add definitions.</h3>
+<ol>
+<% @words_only.sort.each() do |word| %>
+  <% current_index = @words_only.find_index(word) %>
+  <li>
+    <a id="this_word" href="/display/<%= current_index %>"><%= word %></a>
+  </li>
+<% end %>
+</ol>
+
 <form action='/display' method='get'>
-  <ol id="words_list">
-  <% @all_words.each() do |word| %>
-    <li><div style="display: none;" id="hiddenText"><%= word[1] %></div>
-<a href="#" onclick="$('#hiddenText').show(); return false;"><%= word[0] %> </a></li>
-  <% end %>
-  </ol>
+  <label for="word2">
 </form>

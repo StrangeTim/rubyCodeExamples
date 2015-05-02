@@ -4,13 +4,15 @@ require './lib/word'
 require './lib/definition'
 also_reload("lib/**/*.rb")
 
-
-@all_words = []
+@all_words = {}
+@dictionary = {}
 @word = " "
 
 
 get('/') do
-  @all_words = Word.key_sort
+  @dictionary = Word.dictionary
+  @all_words = Word.all_words
+  @words_only = @dictionary.keys
   erb(:index)
 end
 
@@ -19,21 +21,27 @@ get('/success') do
   @message = ""
   @choice = params.fetch('drop_choice')
   if @choice == "1"
-    @message = "added"
+    @message = "Your word, " + @word + ", has been added"
     word_to_add = Word.new(@word)
-    word_to_add.add_word
+    word_to_add.dictionary_add
+    word_to_add.list_add
     erb(:success)
   elsif @choice == "2"
-    @message = "deleted"
+    @message = "The delete function is still under construction."
     erb(:success)
   elsif @choice == "3"
-    @all_words = Word.all_words.to_a
+    @all_words = Word.dictionary.to_a
     erb(:display)
   end
 end
 
-get('/display') do
-  word_link = params.fetch('link_word')
-  @all_words = [word_link, Word.all_words.fetch(word_link)]
+get('/display/:id') do
+  @all_words = Word.all_words
+  @dictionary = Word.dictionary
+  @words_only = @dictionary.keys
+  @word1 = @all_words.fetch(0)
+  @display_word = @all_words.fetch(params.fetch('id').to_i)
+  @display_word2 = @dictionary
+  @display_word3 = @words_only
   erb(:display)
 end

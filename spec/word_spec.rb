@@ -8,11 +8,13 @@ describe(Word) do
     Word.clear()
   end
 
-  describe('#add_word') do
+  describe('#dictionary_add') do
     it("adds a word to the class variable and properly displays it as key/value pair.") do
       test_word = Word.new("Superfluous")
-      test_word.add_word
-      expect(Word.all_words).to(eq({"superfluous" => nil}))
+      test_word.dictionary_add
+      test_word.list_add
+      expect(Word.dictionary).to(eq({"superfluous" => nil}))
+      expect(Word.all_words.fetch(0)).to(eq(test_word))
     end
   end
 end

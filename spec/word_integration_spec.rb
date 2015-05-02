@@ -10,6 +10,6 @@ describe("The word add path", {:type => :feature}) do
     fill_in('word', :with => 'Superfluous')
     click_button('Next')
     expect(page).to have_content('Your word, superfluous, has been added')
-    expect(Word.all_words).to(eq({"superfluous" => nil}))
+    expect(Word.dictionary).to(eq({"superfluous" => nil}))
   end
 end
