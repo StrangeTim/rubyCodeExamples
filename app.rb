@@ -37,11 +37,6 @@ end
 
 get('/display/:id') do
   @all_words = Word.all_words
-  @dictionary = Word.dictionary
-  @words_only = @dictionary.keys
-  @word1 = @all_words.fetch(0)
   @display_word = @all_words.fetch(params.fetch('id').to_i)
-  @display_word2 = @dictionary
-  @display_word3 = @words_only
   erb(:display)
 end
