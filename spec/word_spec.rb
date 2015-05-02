@@ -17,4 +17,17 @@ describe(Word) do
       expect(Word.all_words.fetch(0)).to(eq(test_word))
     end
   end
+
+  describe('#add_def') do
+    it("adds a definition to an existing word and verifies proper storage") do
+      test_word = Word.new("Superfluous")
+      test_def = Definition.new("completely totally 100% unneccessary")
+      test_def.add_def
+      test_word.dictionary_add
+      test_word.list_add
+      test_word.add_def(test_def)
+      expect(Word.dictionary).to(eq({"superfluous" => "completely totally 100% unneccessary"}))
+      expect(Word.all_words.fetch(0)).to(eq(test_word))
+    end
+  end
 end
