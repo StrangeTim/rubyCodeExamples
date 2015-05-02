@@ -1,7 +1,8 @@
+<%= @message %>
 <h1>Choose an option or click on a word below</h1>
 
 
-<form action='/success' method='get'>
+<form action='/' method='post'>
   <p>
   <select name='drop_choice'>
     <option value="1">Add a word</option>
@@ -16,7 +17,7 @@
 
 <h1>Currently known words:</h1>
 
-<h3>Click on a word to see or add definitions.</h3>
+<h3>Click on a word to see, or add, definitions.</h3>
 <ol>
 <% @words_only.sort.each() do |word| %>
   <% current_index = @words_only.find_index(word) %>

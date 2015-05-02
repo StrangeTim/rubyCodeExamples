@@ -1,6 +1,12 @@
 <h1>Word and Definition</h1>
 <p><a href="/">Go Back</a></p>
-
-<%= @display_word.word() %> : <%= @display_word.definition() %>
+<% current_index = @words_only.find_index(@current_word.word) %>
+<form action='/display/<%= current_index %>' method='post'>
+  <%= @current_word.word() %> : <%= @current_word.definition() %><br>
+  <%= @current_word %>
+  <label for="definition">Add a definition?</label>
+  <input id="definition" name="definition" type="text" placeholder="new definition">
+  <p><button type='submit'>Add</button></p>
+</form>
 
 <p><a href="/">Go Back</a></p>
