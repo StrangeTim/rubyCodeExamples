@@ -55,7 +55,8 @@ post('/display/:id') do
 
   @definition = params.fetch('definition')
   new_def = Definition.new(@definition)
+  new_def.add_def
   @current_word = @all_words.fetch(params.fetch('id').to_i)
-  @current_word.add_def(new_def)
+  @current_word.add_def(Definition.all_defs())
   erb(:display)
 end

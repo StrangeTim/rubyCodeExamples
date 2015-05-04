@@ -23,25 +23,14 @@ class Word
     @@words_list = {}
   end
 
-  define_method(:add_def) do |definition|
-    current_word = @@words_list.fetch(self.position())
-    current_def = current_word.definition()
-    if current_def != nil
-      current_def[definition.position()] = definition.definition()
-    else
-      current_def = definition
-      @definition = current_def
-    end
+  define_method(:add_def) do |new_definition|
+    @definition = new_definition
     self.list_add()
     self.dictionary_add()
   end
 
   define_method(:dictionary_add) do
-    if self.definition == nil
-      @@dictionary[self.word()] = self.definition()
-    else
-      @@dictionary[self.word()] = self.definition.definition()
-    end
+    @@dictionary[self.word()] = self.definition()
   end
 
   define_method(:list_add) do

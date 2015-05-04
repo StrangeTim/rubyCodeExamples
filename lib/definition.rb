@@ -1,12 +1,11 @@
 class Definition
-  @@definitions = {}
+  @@definitions = []
 
   define_method(:initialize) do |words|
-    @definition = words
-    @position = @@definitions.length()
+    @words = words
   end
 
-  attr_reader(:definition, :position)
+  attr_reader(:words)
 
   define_singleton_method(:all_defs) do
     @@definitions
@@ -17,7 +16,7 @@ class Definition
   end
 
   define_method(:add_def) do
-    @@definitions[self.position] = self
+    @@definitions.push(self.words)
   end
 
 end
