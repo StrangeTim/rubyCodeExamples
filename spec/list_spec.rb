@@ -31,7 +31,7 @@ describe(List) do
   end
 
   describe("#==") do
-    it("is the same list if it has the same name") do
+    it("is the same list if it has the same name and date") do
       list1 = List.new({:name => "Epicodus stuff", :date => "2015-05-04", :id => nil})
       list2 = List.new({:name => "Epicodus stuff", :date => "2015-05-04", :id => nil})
       expect(list1).to(eq(list2))

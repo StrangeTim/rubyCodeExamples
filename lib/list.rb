@@ -25,6 +25,20 @@ class List
   end
 
   define_method(:==) do |another_list|
-    self.name == another_list.name && self.id == another_list.id
+    self.name == another_list.name && self.date == another_list.date
+  end
+
+  define_singleton_method(:this_list) do |id|
+    returned_lists = DB.exec("SELECT * FROM lists;")
+    lists = nil
+    returned_lists.each() do |list|
+      name = list.fetch("name")
+      date = list.fetch("date")
+      id2 = list.fetch("id").to_i()
+      if id2 == id
+        lists = (List.new({:name => name, :date => date, :id => id}))
+      end
+    end
+    lists
   end
 end
