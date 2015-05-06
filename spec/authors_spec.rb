@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe(Patron) do
-  describe("#patron_name") do
+describe(Author) do
+  describe("#author_name") do
     it() do
 
     end
@@ -19,21 +19,23 @@ describe(Patron) do
     end
   end
 
-  describe("#update_patron") do
+  describe("#update_author") do
     it() do
 
     end
   end
 
-  describe("#delete_patron")  do
+  describe("#delete_author")  do
     it() do
+
     end
   end
 
 
   describe("#==") do
     it() do
+
     end
   end
-  
+
 end
