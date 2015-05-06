@@ -8,11 +8,26 @@ describe(Book) do
     end
   end
 
-  # describe("#save") do
-  #   it() do
-  #
-  #   end
-  # end
+  describe("#save_book") do
+    it("pushes the book name into the database") do
+      test_book = Book.new({:name => "Lordy Lord", :id => nil})
+      test_book.save_book()
+      all_books = Book.all_books
+      expect(all_books).to(eq([test_book]))
+    end
+  end
+
+  describe(".all_books") do
+    it("retrieves all entries in from the database table accessed") do
+      test_book = Book.new({:name => "Lordy Lord", :id => nil})
+      test_book.save_book()
+      test_book2 = Book.new({:name => "Lordy of the Rings", :id => nil})
+      test_book2.save_book()
+      all_books = Book.all_books
+      expect(all_books[0]).to(eq(test_book))
+      expect(all_books[1]).to(eq(test_book2))
+    end
+  end
   #
   # describe("#id") do
   #   it() do
