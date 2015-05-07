@@ -1,5 +1,5 @@
 require 'rspec'
-require 'books'
+require './lib/books'
 require 'patrons'
 require 'authors'
 require 'pg'

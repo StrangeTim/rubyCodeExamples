@@ -49,4 +49,22 @@ class Book
     self.book_name == other_book.book_name && self.book_id == other_book.book_id
   end
 
+  define_singleton_method(:make_random) do |int|
+    counter = 0
+    books_counter = rand(12)
+    books_list = ["The Catcher in the Rye", "20,000 Leagues Under the Sea", "Moby Dick",
+      "Foundation and Empire", "I, Robot", "Mistborn", "The Sword of Truth", "Star Wars: A New Hope",
+      "Fire Star", "Jupiter Ascending", "Of Mice and Men", "Naruto"]
+    until counter == int do
+      new_book = Book.new({:name => books_list[books_counter], :id => nil})
+      new_book.save_book()
+      counter += 1
+      books_counter += 1
+      if books_counter == 12
+        books_counter = 0
+      end
+    end
+  end
+
+
 end

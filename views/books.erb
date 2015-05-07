@@ -1,0 +1,20 @@
+<h1> Here are the books you've requested </h1>
+
+
+  <% if @all_books.length() == 1 %>
+
+      <% @all_books.each do |book| %>
+      Title: <%= book.book_name %><br>
+      <% end %>
+      Author: <br>
+      Genre: <br>
+
+
+
+  <% else %>
+    <ol>
+      <% @all_books.each do |book| %>
+        <li><a href="/books/<%= book.book_id %>"><%= book.book_name %></a></li>
+      <% end %>
+    </ol>
+  <% end %>
