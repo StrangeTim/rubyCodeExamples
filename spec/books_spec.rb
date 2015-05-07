@@ -24,8 +24,7 @@ describe(Book) do
       test_book2 = Book.new({:name => "Lordy of the Rings", :id => nil})
       test_book2.save_book()
       all_books = Book.all_books
-      expect(all_books[0]).to(eq(test_book))
-      expect(all_books[1]).to(eq(test_book2))
+      expect(all_books).to(eq([test_book,test_book2]))
     end
   end
   #

@@ -34,8 +34,8 @@ class Book
 
   end
 
-  define_method(:==) do
-
+  define_method(:==) do |other_book|
+    self.book_name == other_book.book_name && self.book_id == other_book.book_id
   end
 
 end
