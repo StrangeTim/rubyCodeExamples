@@ -1,3 +1,5 @@
+require 'pry'
+
 class Book
   attr_reader(:book_id, :book_name)
 
@@ -17,8 +19,13 @@ class Book
     books
   end
 
-  define_singleton_method(:ind_book) do
-
+  define_singleton_method(:ind_book) do |desired_id|
+    returned_books = DB.exec("SELECT * FROM books WHERE book_id = '#{desired_id}';")
+    books = []
+    book_name = returned_books.first().fetch("book_name")
+    id = returned_books.first().fetch("book_id").to_i
+    books.push(Book.new(:name => book_name, :id => id))
+    books
   end
 
   define_method(:save_book) do
@@ -26,12 +33,16 @@ class Book
     @book_id = result.first().fetch("book_id").to_i()
   end
 
-  define_method(:update_book) do
-
+  define_method(:update_book) do |name, id|
+    DB.exec("UPDATE books SET book_name = '#{name}'  WHERE book_id = '#{id}';")
+    returned_book = DB.exec("Select * FROM books WHERE book_id = '#{id}';")
+    new_name = returned_book.first().fetch("book_name")
+    new_id = returned_book.first().fetch("book_id").to_i
+    new_book = Book.new({:name => new_name, :id => new_id})
   end
 
   define_method(:delete_book) do
-
+    DB.exec("DELETE FROM books WHERE book_id = '#{self.book_id}'")
   end
 
   define_method(:==) do |other_book|
