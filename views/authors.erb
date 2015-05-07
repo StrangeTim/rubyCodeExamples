@@ -1,0 +1,28 @@
+<h1> Here are the authors you've requested </h1>
+
+
+<% if @all_authors.length() == 1 %>
+
+<% @all_authors.each do |author| %>
+Author: <%= author.author_name %><br>
+<% end %>
+
+
+
+<% else %>
+<ol>
+  <% @all_authors.each do |author| %>
+  <li><a href="/authors/<%= author.author_id %>"><%= author.author_name %></a></li>
+  <% end %>
+</ol>
+<% end %>
+
+
+<h3> Add a new Author </h3>
+<form action="/authors" method="post">
+  <label for="author_name">Author Name: </label>
+  <input id="author_name" name="author_name" placeholder="Mahatma Ghandi">
+
+
+  <button type="submit">Add New Author</button>
+</form>

@@ -12,3 +12,12 @@ describe("The library books display path", {:type => :feature}) do
 
   end
 end
+
+describe("The library authors display path", {:type => :feature}) do
+
+  it("Displays all authors currently in the database") do
+    visit('/authors')
+    expect(page).to have_content("William Shakefist")
+
+  end
+end

@@ -5,9 +5,13 @@
 
       <% @all_books.each do |book| %>
       Title: <%= book.book_name %><br>
-      <% end %>
-      Author: <br>
+      <form action="/books/<%= @id %>" method="post">
+      Author: <% if (@all_authors == [] %><input id="author_name" name="author_name" placeholder="Enter an Author">
+      <% else @all_authors %><%= @all_authors[0].author_name %>, <%= @all_authors[1].author_name %>,
+      <%= @all_authors[2].author_name %>, <%= @all_authors[3].author_name %>, <%= @all_authors[4].author_name %>
+      <% end %></form><br>
       Genre: <br>
+      <% end %>
 
 
 

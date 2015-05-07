@@ -66,5 +66,17 @@ class Book
     end
   end
 
+    define_method(:get_authors) do
+
+      returned_authors = DB.exec("SELECT author_id FROM books_authors WHERE book_id = '#{self.book_id}';")
+      authors = []
+      returned_authors.each() do |author|
+        author_name = author.author_name
+        author_id = author.author_id
+        new_author = Author.new(:name => author_name, :id => author_id)
+        authors.push(new_author)
+      end
+      authors
+    end
 
 end
