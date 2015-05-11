@@ -14,8 +14,10 @@
 <% if @tasks.any?() %>
 <ol>
   <% @tasks.each() do |task| %>
-    <li><%= task.task() %></li>
+    <% if task.list_id = @id %>
+      <li><%= task.description() %></li>
     <% end %>
+  <% end %>
 </ol>
 <% end %>
 
