@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514143347) do
+ActiveRecord::Schema.define(version: 20150515021221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,25 +25,20 @@ ActiveRecord::Schema.define(version: 20150514143347) do
     t.datetime "updated_at"
   end
 
-  create_table "availability", force: :cascade do |t|
-    t.integer "stylist_id"
-    t.string  "monday"
-    t.string  "tuesday"
-    t.string  "wednesday"
-    t.string  "thursday"
-    t.string  "friday"
-    t.string  "saturday"
-    t.string  "sunday"
-  end
-
-  add_index "availability", ["stylist_id"], name: "index_availability_on_stylist_id", using: :btree
-
   create_table "clients", force: :cascade do |t|
-    t.string "client_name"
+    t.string  "client_name"
+    t.integer "stylist_id"
   end
 
   create_table "stylists", force: :cascade do |t|
     t.string "style_name"
+    t.string "avail_mon"
+    t.string "avail_tue"
+    t.string "avail_wed"
+    t.string "avail_thu"
+    t.string "avail_fri"
+    t.string "avail_sat"
+    t.string "avail_sun"
   end
 
 end

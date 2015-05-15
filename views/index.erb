@@ -5,7 +5,15 @@
 <% if @stylists.any? %>
   <% @stylists.each do |stylist| %>
     <ul>
-      <li><a href="/stylist/<%=stylist.style_name%>/<%=stylist.id%>"><%=stylist.style_name%></a></li>
+      <li><a href="/stylist/<%=stylist.style_name%>/<%=stylist.id%>"><%=stylist.style_name%></a>
+      &nbsp&nbsp&nbsp&nbsp
+      <span class = "btn-group">
+        <form action = "/<%=stylist.id%>" method = "post">
+          <input name ="_method" type ="hidden" value ="delete">
+          <button type = "submit" class="btn btn-danger">Delete</button>
+        </form>
+      </span>
+      <p></p></li>
     </ul>
   <% end %>
 <% else %>
