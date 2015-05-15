@@ -1,0 +1,67 @@
+
+<% if @venues == nil %>
+  <h1>Epic Rock Bands I've Seen</h1>
+  <% if @bands.any? %>
+  <ol>
+  <% @bands.each do |band| %>
+    <li><a href ="/bands/<%= band.id %>"><%= band.band_name %></a>
+      &nbsp&nbsp&nbsp&nbsp
+      <span class = "btn-group">
+        <form action = "/bands" method = "post">
+        <input name ="_method" type ="hidden" value ="delete">
+        <input name ="delete_band" type ="hidden" value ="<%= band.id %>">
+        <button type = "submit" class="btn btn-danger">Delete</button>
+        </form>
+      </span><p></p>
+    </li>
+  <% end %>
+  </ol>
+  <% else %>
+    <h5>Let's just say that I like to stay at home?</h5>
+  <% end %>
+  <br>
+  <div class="form group">
+    <p><form action="/bands" method="post">
+      <input id="band_name" name="band_name" placeholder="Add new band">
+      <button type="submit" class="btn btn-info">Add</button>
+    </form></p>
+  </div>
+
+<% else %>
+  <h1>Venues where <%= @this_band.band_name %> has performed</h1>
+  <% if @venues.any? %>
+  <ol>
+    <% @venues.each do |venue| %>
+    <li><a href ="/venues/<%= venue.id %>"><%= venue.venue_name %></a>
+      &nbsp&nbsp&nbsp&nbsp
+      <span class = "btn-group">
+        <form action = "/bands/<%= @this_band.id %>" method = "post">
+          <input name ="_method" type ="hidden" value ="delete">
+          <input name ="delete_venue" type ="hidden" value ="<%= venue.id %>">
+          <button type = "submit" class="btn btn-danger">Remove</button>
+        </form>
+      </span>
+      <p></p>
+    </li>
+    <% end %>
+  </ol>
+  <% else %>
+    <h5>These guys are new. Keep an eye on them.</h5>
+  <% end %>
+  <br>
+  <div class="form group">
+    <p><form action="/bands/<%= @this_band.id %>" method="post">
+      <input name ="_method" type ="hidden" value ="patch">
+      <label for="venue_add">Choose a venue where this band has performed:</label>
+      <span class = "btn-group">
+        <select id="venue_add" name="venue_add" type="text">
+          <option value="">None</option>
+          <% @all_venues.each do |venue| %>
+          <option value="<%= venue.id %>"><%= venue.venue_name %></option>
+          <% end %>
+        </select>
+      </span>
+      <button type="submit" class="btn btn-info">Add</button>
+    </form></p>
+  </div>
+<% end %>
