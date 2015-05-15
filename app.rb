@@ -57,3 +57,7 @@ delete '/clients/delete' do
   del_client.delete
   redirect '/clients'
 end
+
+get '/info' do
+  erb(:info)
+end
