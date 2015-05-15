@@ -29,6 +29,4 @@ class Venue < ActiveRecord::Base
     self.venue_name = name
   end
 
-
-
 end
