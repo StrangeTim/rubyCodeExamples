@@ -3,6 +3,15 @@ class Band < ActiveRecord::Base
   validates(:band_name, {:presence => true, :length => {:maximum => 50}})
   before_save(:capitalize_name)
 
+  define_singleton_method(:all_names) do
+    bands = Band.all
+    just_names = []
+    bands.each do |band|
+      just_names.push(band.band_name)
+    end
+    just_names
+  end
+
 
   private
 
@@ -18,6 +27,7 @@ class Band < ActiveRecord::Base
       name[0].capitalize!
     end
     name = name.join(" ")
+    self.band_name = name
   end
 
 end
