@@ -7,8 +7,7 @@ class Venue < ActiveRecord::Base
   private
 
   define_method(:capitalize_name) do
-    name = self.venue_name
-    name.split!(" ")
+    name = self.venue_name.split(" ")
     badwords = ["of", "the", "for", "and", "to", "a", "nor", "but", "an", "at", "by", "from", "in", "on", "up", "as", "it"]
     name.each do |word|
       if !badwords.include?(word)
@@ -18,8 +17,7 @@ class Venue < ActiveRecord::Base
     if badwords.include?(name[0])
       name[0].capitalize!
     end
-    name.join!(" ")
-    self.update(venue_name: name)
+    name = name.join(" ")
   end
 
 end
