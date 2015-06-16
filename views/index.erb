@@ -1,0 +1,23 @@
+<h1>Eventually this page will play music</h1>
+
+<h2>Here are your currently known CDs:</h2>
+
+<ul>
+  <% @all_cds.each() do |name| %>
+    <li><%= name %></li>
+    <% end %>
+</ul>
+
+<form action="/" method="post">
+  <label for="new_cd">Add New CD:</label>
+  <input id="new_cd" name="new_cd" type="text">
+  <p></p>
+  <button type="submit">Add!</button>
+</form>
+
+<form action="/reset" method="post" class="form">
+  <label for="reset">Would you like to reset your jukebox?</label>
+  <input id="reset" name="reset" type="radio" value="yes">Yes
+  <input id="reset" name="reset" type="radio" value="no"checked>No
+  <button type="submit">Reset</button>
+</form>
