@@ -1,19 +1,25 @@
-<p>Add a new task:</p>
+<h1>Your Current Lists</h1>
 
-<form action="/final_list" method="post">
-  <label for="day">What day is this task for?</label>
-  <input id="day" name="day" type="text">
+<% if @lists.any?() %>
 
-  <label for="description">Task Description</label>
-  <input id="description" name="description" type="text">
-
-  <button type="submit">Add!</button>
-</form>
-
-<h1>Current Tasks</h1>
-
-<ul>
-  <% @tasks.each() do |task| %>
-    <li><%= task.description[0] %> - <%= task.description[1] %></li>
+  <ul>
+    <% @lists.each() do |list| %>
+      <li><a href="/view_list/<%= list.id() %>"><%= list.name() %></a> </li>
     <% end %>
-</ul>
+  </ul>
+
+<% else %>
+
+    <p>There are no lists yet!</p>
+
+<% end %>
+<br>
+<h3> Add a new list? </h3>
+<form action="/" method="post">
+  <label for="weekday">What day of the week is your new list for? </label>
+  <input id="weekday" name="weekday">
+  <label for="date">What date is your new list for? </label>
+  <input id="date" name="date">
+
+  <button type="submit">Add New List</button>
+</form>
