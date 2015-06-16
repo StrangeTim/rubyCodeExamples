@@ -1,0 +1,24 @@
+<h1> Here are the books you've requested </h1>
+
+
+  <% if @all_books.length() == 1 %>
+
+      <% @all_books.each do |book| %>
+      Title: <%= book.book_name %><br>
+      <form action="/books/<%= @id %>" method="post">
+      Author: <% if (@all_authors == [] %><input id="author_name" name="author_name" placeholder="Enter an Author">
+      <% else @all_authors %><%= @all_authors[0].author_name %>, <%= @all_authors[1].author_name %>,
+      <%= @all_authors[2].author_name %>, <%= @all_authors[3].author_name %>, <%= @all_authors[4].author_name %>
+      <% end %></form><br>
+      Genre: <br>
+      <% end %>
+
+
+
+  <% else %>
+    <ol>
+      <% @all_books.each do |book| %>
+        <li><a href="/books/<%= book.book_id %>"><%= book.book_name %></a></li>
+      <% end %>
+    </ol>
+  <% end %>
