@@ -1,0 +1,21 @@
+<h1>All Clients:</h1>
+
+<% if @clients.any? %>
+  <% @clients.each do |client| %>
+    <ul>
+      <li><%=client.client_name%></a>
+      &nbsp&nbsp&nbsp&nbsp
+      <span class = "btn-group">
+        <form action = "/clients/delete" method = "post">
+          <input name ="_method" type ="hidden" value ="delete">
+          <input name ="client_id" type ="hidden" value ="<%= client.id %>">
+          <button type = "submit" class="btn btn-danger">Delete</button>
+        </form>
+      </span>
+      <p></p></li>
+    </ul>
+  <% end %>
+<% else %>
+  <br>
+  <h4> No Customers? Wow. Your business model sucks!</h4>
+<% end %>

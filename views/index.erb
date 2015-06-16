@@ -1,0 +1,29 @@
+<h1>Welcome to our Stupidly Expensive Salon!</h1>
+
+<h5 class="text-center">Please select a stylist below to see their availabilities and schedule an appointment!</h5>
+<br>
+<% if @stylists.any? %>
+  <% @stylists.each do |stylist| %>
+    <ul>
+      <li><a href="/stylist/<%=stylist.style_name%>/<%=stylist.id%>"><%=stylist.style_name%></a>
+      &nbsp&nbsp&nbsp&nbsp
+      <span class = "btn-group">
+        <form action = "/<%=stylist.id%>" method = "post">
+          <input name ="_method" type ="hidden" value ="delete">
+          <button type = "submit" class="btn btn-danger">Delete</button>
+        </form>
+      </span>
+      <p></p></li>
+    </ul>
+  <% end %>
+<% else %>
+  <br>
+  <h4> Great customer support right? A hair salon with no stylists.  Must be a new business model</h4>
+<% end %>
+<br>
+<div class="form group">
+  <p><form action="/" method="post">
+    <input id="style_name" name="style_name" placeholder="Add new stylist">
+    <button type="submit" class="btn btn-info">Add</button>
+  </form></p>
+</div>

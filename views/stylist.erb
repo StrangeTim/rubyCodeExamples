@@ -1,0 +1,44 @@
+<h1><%= @stylist.style_name %></h1>
+
+<h3>Availablility: </h3>
+  Monday: &nbsp&nbsp&nbsp<% if @stylist.avail_mon != nil %> <%= @stylist.avail_mon %><% else %> Such Work <% end %><br>
+  Tuesday: &nbsp&nbsp&nbsp<% if @stylist.avail_tue != nil %> <%= @stylist.avail_tue %><% else %> So Availability <% end %><br>
+  Wednesday: &nbsp&nbsp&nbsp<% if @stylist.avail_wed != nil %> <%= @stylist.avail_wed %><% else %> Much Hair <% end %><br>
+  Thursday: &nbsp&nbsp&nbsp<% if @stylist.avail_thu != nil %> <%= @stylist.avail_thu %><% else %> Wow <% end %><br>
+  Friday: &nbsp&nbsp&nbsp<% if @stylist.avail_fri != nil %> <%= @stylist.avail_fri %><% else %> Very Fashion <% end %><br>
+  Saturday: &nbsp&nbsp&nbsp<% if @stylist.avail_sat != nil %> <%= @stylist.avail_sat %><% else %> Amaze Cut <% end %><br>
+  Sunday: &nbsp&nbsp&nbsp<% if @stylist.avail_sun != nil %> <%= @stylist.avail_sun %><% else %> Color LoL <% end %><br><br>
+<div class="form group">
+  <form action="/stylist/avail" method="post">
+    <input name ="_method" type ="hidden" value ="patch">
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-info" disabled>Edit?</button>
+  </form>
+</div>
+<br><br>
+<% if @clients.any? %>
+  <h3>Here are all clients currently assigned to this stylist</h3>
+  <% @clients.each do |client| %>
+    <li><%= client.client_name %>
+      &nbsp&nbsp&nbsp&nbsp
+      <span class = "btn-group">
+        <form action = "/stylist/<%=@stylist.style_name%>/<%=@stylist.id%>" method = "post">
+          <input name ="_method" type ="hidden" value ="delete">
+          <input name ="client_id" type ="hidden" value ="<%= client.id %>">
+          <button type = "submit" class="btn btn-danger">Delete</button>
+        </form>
+      </span>
+      <p></p>
+    </li>
+  <% end %>
+  <br>
+
+<% else %>
+  <h3>This stylist has no clients??? <br> Why did I hire them again?</h3>
+
+<% end %>
+<div class="form group">
+  <p><form action="/stylist/<%=@stylist.style_name%>/<%=@stylist.id%>" method="post">
+    <input id="client" name="client" placeholder="Add client?">
+    <button type="submit" class="btn btn-info">Add</button>
+  </form></p>
+</div>
